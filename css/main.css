@@ -14,7 +14,7 @@
 }
 .container{
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
 
 }
 @media (max-width:700px) {
@@ -31,7 +31,7 @@ a {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'main-font', sans-serif;
     font-size: 16;
 }
 
@@ -270,7 +270,7 @@ body {
     
 }
 .hero img{
-    width: 50vw;
+    width: 30vw;
     margin: 0px auto 0 auto;
 
 }
