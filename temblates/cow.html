@@ -153,10 +153,10 @@
                     serchForCow(0, 0, camelValue)
                 } if (camelValue > 109) {
                     serchForCow(0, 0, camelValue)
-                } if (camelValue > 119) {
+                } if (camelValue < 120) {
                     serchForCow(0, 0, camelValue)
-                }if (camelValue > 120) {
-                    serchForCow(0, 0, camelValue)
+                }if (camelValue > 119) {
+                    extraSerch()
                 }
 
             })
@@ -183,11 +183,12 @@
                     content = "2 വയസ്സുള്ള 1 പശു + &nbsp;1 വയസ്സുള്ള 2 പശുക്കള്‍";
                     displayCow.style.color = "green"
                     displayCow.innerHTML = content;
-                } if (numCow > 120) {
-                    content = "ഒരോ 30 മാടുകളിലും ഒരു വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ്. അല്ലങ്കിൽ ഒരോ 40 മാടുകളിലും രണ്ട് വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ് ";
+                } 
+            }
+            function extraSerch(){
+                content = "ഒരോ 30 മാടുകളിലും ഒരു വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ്. അല്ലങ്കിൽ ഒരോ 40 മാടുകളിലും രണ്ട് വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ് ";
                     displayCow.style.color = "green"
                     displayCow.innerHTML = content;
-                }
             }
         </script>
         <script src="../js/main.js"></script>
