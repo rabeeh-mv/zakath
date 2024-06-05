@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <nav class="nav container">
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="../temblates/cash.html" class="nav__link">
+                            <!-- <i class="ri-trophy-line"></i> -->
+                            <img src="../icon/finance-icon.svg" style="height: 25px; width: 25px;" alt="">കറൻസി
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./g-szakat.html" class="nav__link">
+                            <!-- <i class="ri-trophy-line"></i> -->
+                            <img src="../icon/profit.png" style="height: 25px; width: 25px;" alt="">സ്വർണ്ണം/വെള്ളി
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./busness.html" class="nav__link">
+                            <!-- <i class="ri-trophy-line"></i> -->
+                            <img src="../icon/briefcase-icon.svg" style="height: 25px; width: 25px;" alt="">കച്ചവടം
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./fithr.html" class="nav__link">
+                            <!-- <i class="ri-trophy-line"></i> -->
+                            <img src="../icon/corn.png" style="height: 25px; width: 25px;" alt="">ഫിത്ർ
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./animal.html" class="nav__link">
+                            <!-- <i class="ri-trophy-line"></i> -->
+                            <img src="../icon/camel-silhouette.png" style="height: 25px; width: 25px;" alt="">മൃഗങ്ങൾ
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- CLOSE BUTTON -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+            <div class="container">
+                <div class="nav__buttons">
+                    <div class="nav__home nav__link_mob">
+                        <a href="../index.html" class="nav__link">
+                            <i class="ri-home-fill icon"></i>Home
+                        </a>
+                    </div>
+                    <div class="nav__about nav__link_mob">
+                        <a href="../about.html" class="nav__link">
+                        <i class="ri-book-read-fill icon"></i>About Us
+                        </a>
+                    </div>
+                    <div class="nav__contact nav__link_mob">
+                        <a href="../contact.html" class="nav__link">
+                            <i class="ri-chat-2-fill icon"></i>Contact Us
+                        </a>
+                    </div>
+                    <!-- toggle -->
+                    <div class="nav__toggel nav__link_mob" id="nav-toggle">
+                        <i class="ri-menu-fill"></i>Menu
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container">
+            <div class="hero">
+                <img src="../image/ىشةث.png" alt="" class="logo">
+            </div>
+        </div>
+        
+    </section>
+    <h4 class="card__name">ZAKATH CALCULATOR</h4>
+    <div class="container">
+        <div class="calculater">
+
+            <div class="calculater-wraper">
+                <div class="title-zakat">
+                    <h3 class="title-text">നിങ്ങളുടെ കയ്യിലുള്ള സമ്പത്തിന്റെ സകാത്ത് കണ്ടെത്താം</h3>
+                </div>
+                <div class="input-price">
+
+                    <table>
+                        <tr>
+                            <th colspan="2">ഇപ്പോയത്തേ വില ഒരു ഗ്രാമിന്</th>
+                        </tr>
+                        <tr>
+                            <td>വെള്ളി</td>
+                            <td><input type="number" id="siver-prise" placeholder="ഒരു ഗ്രാമിന്റെ വില" value="100"></td>
+                        </tr>
+                        <tr>
+                            <td>സ്വർണം</td>
+                            <td><input type="number" id="gold-prise" placeholder="ഒരു ഗ്രാമിന്റെ വില" value="6670"></td>
+                        </tr>
+                    </table>             
+                </div>
+                <div class="instrution">
+                    <p>ഒരു വർഷമായി നിങ്ങൾ സൂക്ഷിച്ച പണം</p>
+                </div>
+                <input class="input" type="number" placeholder="നിങ്ങളുടെ കയ്യിലുള്ള തുക" id="input-value">
+                <button class="btn" type="submit" id="find">കണ്ടെത്തുക</button>
+                <div class="result">
+                    <p id="hind"></p>
+                    <h3 id="zhkath-price"></h3>
+                </div>
+                <div class="answer">
+                    <div class="text">
+                        <h4>നോട്ടിനു സകാത്ത് എത്രയാണെന്നു എങ്ങനെ കണക്കാക്കാം?</h4>
+                        <p>വെള്ളിയുടെ നിസാബായ 595 ഗ്രാം വെള്ളി എത്ര നോട്ടിന്റെ മൂല്യമാണോ അത്ര വെള്ളി വാങ്ങാൻ എത്ര നോട്ട്
+                            നൽകണോ അത്രയും നോട്ടുകൾ ഒരാൾ ഒരു വർഷം സൂക്ഷിച്ചാൽ അതിന്റെ രണ്ടര ശതമാനം സകാത്ത് നൽകണം.
+                            അവകാശികൾക്ക് ഏറ്റവും ഉപകാരപ്പെടുന്നത് വെള്ളിയുടെ മൂല്യം നോക്കി കറൻസിയുടെ സക്കാത്ത്
+                            നൽകലായതുകൊണ്ടാണ് 595 ഗ്രാം വെള്ളിയുടെ മൂല്യം പരിഗണിക്കുന്നത്. വെള്ളിയാണല്ലോ സ്വർണത്തെക്കാൾ
+                            മൂല്യവും വിലയും കുറഞ്ഞത്.</p>
+                    </div>
+                </div>
+                <div style="height: 80px;"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const zhkath = document.getElementById("zhkath-price");
+const subBtn = document.getElementById("find");
+
+subBtn.addEventListener('click', () => {
+    const silverInG = document.getElementById("siver-prise");
+    const picSilver = parseFloat(silverInG.value) * 595;
+    const inputValue = parseFloat(document.getElementById("input-value").value);
+    if (inputValue < picSilver) {
+        notZhakath();
+    } else if (inputValue > picSilver) {
+        find();
+    } else if (inputValue === picSilver) {
+        find();
+    }
+});
+
+function notZhakath() {
+    document.getElementById("hind").style.color = "#FF0000";
+    document.getElementById("hind").innerHTML = "നിങ്ങൾക്ക് സകാത്ത് കൊടുക്കേണ്ടതില്ല";
+    document.getElementById("zhkath-price").innerHTML = "";
+}
+
+function find() {
+    const inputValue = parseFloat(document.getElementById("input-value").value);
+    const zhkath = document.getElementById("zhkath-price");
+    const instruction = "സക്കാത്ത് ആയി നൽകേണ്ട തുക";
+    document.getElementById("hind").innerHTML = instruction;
+    zhkath.innerHTML = (inputValue / 40) + " ₹";
+    document.getElementById("hind").style.color = "green";
+}
+
+    </script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

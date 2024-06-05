@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Rubik+Vinyl&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+@font-face {
+    font-family: main-font;
+    src: url(../font/AnekMalayalam-VariableFont_wdth\,wght.ttf);
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    margin: 0 auto;
+    width: 90%;
+
+}
+@media (max-width:700px) {
+    .container{
+        width: 98%;
+    }
+}
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.header {
+    width: 100%;
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
+    z-index: 100;
+}
+
+.nav__buttons {
+
+    height: calc(4.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px hsla(207, 24%, 35%, .3);
+    /* box-shadow: 0 4px 20px #009f7b; */
+    padding-inline: 1.5rem;
+    border-radius: 3rem;
+    margin: 0 30px;
+    z-index: 130;
+
+}
+
+.nav__logo,
+.nav__toggel,
+.nav__close,
+.nav__home,
+.nav__about,
+.nav__contact{
+    color:hsl(207, 4%, 16%);
+    /* color:#009f7b; */
+
+}
+
+.nav__toggle {
+    display: flex;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+    .nav__menu{
+        position: fixed;
+        width: 88%;
+        left: 0;
+        right: 0;
+        bottom: -60%;
+        margin: 0 auto;
+        background-color: #ffffff;
+        box-shadow: 0 4px 20px hsla(207, 24%, 35%, .1 );
+        padding: 2rem 1.5rem 5rem;
+        border-radius: 2rem;
+        transition: bottom .3s;
+        z-index: 150;
+    }
+    
+}
+
+
+.nav__list{
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    gap: 2rem 3rem ;
+} 
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: .25rem;
+    font-size: .813rem;
+    font-family: main-font;
+    color: hsl(207, 4%, 28%);
+    /* color: #009f7b; */
+    transition: color .3s;
+    
+}
+
+.nav__link:hover {
+    color: hsl(207, 4%, 16%);
+    font-weight: 600;
+}
+
+.nav__link i {
+    font-size: 1.25rem;
+
+}
+
+.nav__close {
+    position: absolute;
+    right: 1.5rem;
+    bottom: .7rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.nav__link_mob{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.show-menu {
+    bottom: 2rem;
+}
+.nav__buttons{
+    position: fixed;
+    bottom: 15px;
+    width: 88%;
+
+
+    }
+ .nav__link_mob .nav__link{
+    text-decoration: none;
+    color: hsl(207, 4%, 28%);
+    /* color: #009f7b; */
+
+    
+    font-size: 18px;
+ }
+
+
+
+
+/* For medium devices */
+@media screen and (min-width:576px){
+    .nav,
+    .nav__menu{
+        width:88%px;
+    }
+    .nav{
+        margin: 0 auto;
+    }
+    .nav__buttons{
+        position: fixed;
+        bottom: 15px;
+        width: 88%;
+        justify-content: space-around;
+        margin-left: -25px;
+        
+    
+        }
+        
+    
+    
+}
+
+
+/* large devices */
+@media screen and (min-width: 1023px){
+    .header{
+        top: 0;
+        bottom: initial;
+        background: transparent;
+
+        transition: .4s;
+    }
+
+    .nav{
+        width: initial;
+        height: calc(3.5rem + 1.5rem);
+        box-shadow: none;
+        border-radius: 0;
+        column-gap: 3rem;
+        margin-inline: 1.5rem;
+        padding: 0;
+    }
+    .nav__close,
+    .nav__list{
+        display: none;
+
+    }
+    .nav__buttons{
+        position: absolute;
+        top: 10px;
+        margin-top: 10px;
+        box-shadow: none;
+        justify-content: center;
+    }
+    .nav__link_mob{
+        margin: 0 30px;
+        font-size: 20px;
+        
+        flex-direction: row;
+    }
+    .nav__link_mob .icon{
+        display: none;
+    }
+    .nav__toggel{
+        display: none;
+    }
+    .card__name{
+        text-align: right;
+    }
+}
+
+
+/* .big-circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #1cd4af, #159b80);
+    bottom: 50%;
+    right: 50%;
+    transform: translate(-40%, 38%);
+    filter: blur(100px);
+  }
+
+  .big-circle:after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    background-color: #fafafa;
+    border-radius: 50%;
+    top: calc(50% - 180px);
+    left: calc(50% - 180px);
+  } */
+
+
+
+
+.hero{
+    display: flex;
+    
+}
+.hero img{
+    width: 50vw;
+    margin: 0px auto 0 auto;
+
+}
+.logo{
+    z-index: 100;
+}
+
+
+
+
+.card__name{
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    font-family:'poppins';
+
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    margin-top: 25px;
+    margin-bottom: 100px;
+    gap: 30px;
+}
+
+.darksoul-card2 {
+    display: flex;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 60px rgb(235, 235, 235), -5px -5px 60px rgb(237, 237, 237);
+    border-radius: 15px;
+    transition: all 2s;
+    align-items: start;
+    justify-content: center;
+    font-family: 'Belanosima', sans-serif;
+}
+
+.circle2 {
+    position: absolute;
+    margin: auto;
+    margin-top: 35px;
+    width: 60px;
+    height: 60px;
+    background-color: #009f7b;
+    border-radius: 50%;
+    transition: all 0.5s;
+
+}
+
+.darksoul-card2:hover .circle2 {
+    margin-top: 0px;
+    background-color: #009f7b;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    transition: all 0.5s;
+}
+
+.darksoul-card2:hover .content {
+    color: white;
+}
+
+.content {
+    margin-top: 110px;
+    /* margin: auto; */
+    z-index: 100;
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+    font-family:main-font ;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        flex-direction: column;
+    }
+}
+
+.darksoul-card2 img {
+    position: absolute;
+    margin: auto;
+    margin-top: 47px;
+    /* padding-top: 12px; */
+}
