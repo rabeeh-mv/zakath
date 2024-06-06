@@ -152,9 +152,10 @@
                 countNum = goldPrice * 85;
                 if (number > 84) {
                     document.getElementById('zhkath-price').style.color = "green"
-                    findPriceOfGram = number * goldPrice
-                    zkathGold = findPriceOfGram / 40
-                    enser = "സക്കാത്ത് ആയി നൽകേണ്ട തുക " + zkathGold
+                    // findPriceOfGram = number * goldPrice
+                    // zkathGold = findPriceOfGram / 40
+                    zkathGold = number / 40 
+                    enser = "സക്കാത്ത് ആയി നൽകേണ്ടത് " + zkathGold + " ഗ്രാം സ്വർണം"
                 } if (number < 85) {
                     document.getElementById('zhkath-price').style.color = "red"
                     enser = "നിങ്ങൾക്ക് സകാത്ത് കൊടുക്കേണ്ടതില്ല"
@@ -164,9 +165,10 @@
                 countNum = silverPrice * 595;
                 if (number > 594) {
                     document.getElementById('zhkath-price').style.color = "green"
-                    findPriceOfGram = number * silverPrice
-                    zkathsilver = findPriceOfGram / 40
-                    enser = "സക്കാത്ത് ആയി നൽകേണ്ട തുക " + zkathsilver
+                    // findPriceOfGram = number * silverPrice
+                    // zkathsilver = findPriceOfGram / 40
+                    zkathsilver = number / 40
+                    enser = "സക്കാത്ത് ആയി നൽകേണ്ടത് " + zkathsilver + " ഗ്രാം വെള്ളി"
                 } if (number < 595) {
                     document.getElementById('zhkath-price').style.color = "red"
                     enser = "നിങ്ങൾക്ക് സകാത്ത് കൊടുക്കേണ്ടതില്ല"
