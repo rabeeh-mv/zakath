@@ -162,8 +162,8 @@
                 serchZakat(2, 3, camelValue);
             } else if (camelValue > 90 & camelValue < 120) {
                 serchZakat(3, 4, camelValue);
-            } else if (camelValue > 120) {
-                zakatCountOfCamel(camelValue);
+            } else if (camelValue > 119) {
+                calculate();
             }
         });
 
@@ -187,15 +187,71 @@
 
         }
 
-        function zakatCountOfCamel(numbOfCamel) {
-            // let fifteen = numbOfCamel / 50
-            // let forteen = numbOfCamel / 40
-            // content = "മൂന്നിനും നാലിനും ഇടക്ക് പ്രായമുള്ള " + Math.floor(fifteen) + " പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ് <br/> അല്ലങ്കിൽ രണ്ടിനും മൂന്നിനും ഇടക്ക് പ്രായമുള്ള " + Math.floor(forteen) + " പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ്";
-            content = "120നു മുകളിലുള്ള ഓരോ 50 ഒട്ടകത്തിനും മൂന്നിനും നാലിനും ഇടക്ക് പ്രായമുള്ള ഒരു പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ് <br/> അല്ലങ്കിൽ ഓരോ 40 ഒട്ടകത്തിനും രണ്ടിനും മൂന്നിനും ഇടക്ക് പ്രായമുള്ള ഒരു പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ്"
-            document.getElementById("display").innerHTML = content
+        // function zakatCountOfCamel(numbOfCamel) {
+        //     // let fifteen = numbOfCamel / 50
+        //     // let forteen = numbOfCamel / 40
+        //     // content = "മൂന്നിനും നാലിനും ഇടക്ക് പ്രായമുള്ള " + Math.floor(fifteen) + " പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ് <br/> അല്ലങ്കിൽ രണ്ടിനും മൂന്നിനും ഇടക്ക് പ്രായമുള്ള " + Math.floor(forteen) + " പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ്";
+        //     content = "120നു മുകളിലുള്ള ഓരോ 50 ഒട്ടകത്തിനും മൂന്നിനും നാലിനും ഇടക്ക് പ്രായമുള്ള ഒരു പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ് <br/> അല്ലങ്കിൽ ഓരോ 40 ഒട്ടകത്തിനും രണ്ടിനും മൂന്നിനും ഇടക്ക് പ്രായമുള്ള ഒരു പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ്"
+        //     document.getElementById("display").innerHTML = content
+        // }
+
+        function calculate() {
+    let number = parseInt(document.getElementById('input-camel').value);
+    const originalNumber = number;
+    const resultDiv = document.getElementById('display');
+    resultDiv.innerHTML = '';
+
+    if (isNaN(number) || number <= 0) {
+        resultDiv.innerHTML = 'Please enter a valid positive number.';
+        return;
+    }
+
+    const ways = [];
+    let foundCombination = false;
+
+    while (!foundCombination && number >= 0) {
+        for (let i = 0; i * 40 <= number; i++) {
+            for (let j = 0; j * 50 <= number; j++) {
+                if (i * 40 + j * 50 === number) {
+                    let result = '';
+                    if (i > 0) {
+                        result += ` രണ്ടിനും മൂന്നിനും ഇടക്ക് പ്രായമുള്ള ${i} പെണ്ണൊട്ടകത്തെ`;
+                        if(j > 0){
+                            result += `യും കൂടെ`
+                        }else{
+                            result += ` സകാത്തായി നല്‍കേണ്ടതാണ്`
+                        }
+                    }
+                    if (j > 0) {
+                        result += ` മൂന്നിനും നാലിനും ഇടക്ക് പ്രായമുള്ള ${j} പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ്`;
+                    }
+                    ways.push(result.trim());
+                    foundCombination = true;
+                }
+            }
         }
+        if (!foundCombination) {
+            number--;
+        }
+    }
 
-
+    if (ways.length > 0) {
+        let resultString = ``;
+        for (let k = 0; k < ways.length; k++) {
+            if (k > 0) {
+                resultString += 'അല്ലെങ്കിൽ ';
+            }
+            resultString += ways[k] + '<br>';
+        }
+        resultDiv.innerHTML = resultString;
+        if (originalNumber !== number) {
+            resultDiv.innerHTML += `<br>Note: The original number was ${originalNumber}, and it was reduced by ${originalNumber - number} to find a valid combination.`;
+        }
+    } 
+    // else {
+    //     resultDiv.innerHTML = `No combination of 40s and 50s can make ${number}.`;
+    // }
+}
     </script>
     <script src="../js/main.js"></script>
 

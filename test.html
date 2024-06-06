@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40s and 50s Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>40s and 50s Game</h1>
+        <input type="number" id="inputNumber" placeholder="Enter a number">
+        <button onclick="calculate()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+       function calculate() {
+    let number = parseInt(document.getElementById('inputNumber').value);
+    const originalNumber = number;
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = '';
+
+    if (isNaN(number) || number <= 0) {
+        resultDiv.innerHTML = 'Please enter a valid positive number.';
+        return;
+    }
+
+    const ways = [];
+    let foundCombination = false;
+
+    while (!foundCombination && number >= 0) {
+        for (let i = 0; i * 40 <= number; i++) {
+            for (let j = 0; j * 50 <= number; j++) {
+                if (i * 40 + j * 50 === number) {
+                    let result = '';
+                    if (i > 0) {
+                        result += ` രണ്ടിനും മൂന്നിനും ഇടക്ക് പ്രായമുള്ള ${i} പെണ്ണൊട്ടകത്തെ`;
+                        if(j > 0){
+                            result += `യും കൂടെ`
+                        }else{
+                            result += ` സകാത്തായി നല്‍കേണ്ടതാണ്`
+                        }
+                    }
+                    if (j > 0) {
+                        result += ` മൂന്നിനും നാലിനും ഇടക്ക് പ്രായമുള്ള ${j} പെണ്ണൊട്ടകത്തെ സകാത്തായി നല്‍കേണ്ടതാണ്`;
+                    }
+                    ways.push(result.trim());
+                    foundCombination = true;
+                }
+            }
+        }
+        if (!foundCombination) {
+            number--;
+        }
+    }
+
+    if (ways.length > 0) {
+        let resultString = `Ways to make ${number} using 40s and 50s:<br>`;
+        for (let k = 0; k < ways.length; k++) {
+            if (k > 0) {
+                resultString += 'അല്ലെങ്കിൽ ';
+            }
+            resultString += ways[k] + '<br>';
+        }
+        resultDiv.innerHTML = resultString;
+        if (originalNumber !== number) {
+            resultDiv.innerHTML += `<br>Note: The original number was ${originalNumber}, and it was reduced by ${originalNumber - number} to find a valid combination.`;
+        }
+    } else {
+        resultDiv.innerHTML = `No combination of 40s and 50s can make ${number}.`;
+    }
+}
+
+ 
+    </script>
+</body>
+</html>

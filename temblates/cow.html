@@ -103,7 +103,7 @@
                 <input class="input" type="number" placeholder="പശുവിന്റെ  എണ്ണം" id="input-cow">
                 <button class="btn" type="submit" id="cow-find">കണ്ടെത്തുക</button>
                 <div class="screen">
-                    <h3 class="display" id="display-cow"></h3>
+                    <h4 class="display" id="display-cow"></h4>
                 </div>
                 <div class="answer">
                     <div class="text">
@@ -151,10 +151,10 @@
                     serchForCow(1, 3, camelValue)
                 } if (camelValue > 99) {
                     serchForCow(0, 0, camelValue)
-                } if (camelValue > 109) {
+                } if (camelValue > 109 & camelValue < 119) {
                     serchForCow(0, 0, camelValue)
                 } if (camelValue > 119) {
-                    serchForCow(0, 0, camelValue)
+                    calculate()
                 }
 
             })
@@ -181,16 +181,75 @@
                     content = "2 വയസ്സുള്ള 1 പശു + &nbsp;1 വയസ്സുള്ള 2 പശുക്കള്‍";
                     displayCow.style.color = "green"
                     displayCow.innerHTML = content;
-                } if (numCow > 109 & numCow < 119) {
-                    content = "2 വയസ്സുള്ള 2 പശുക്കള്‍ അല്ലെങ്കില്‍ 1 വയസ്സുള്ള 1 പശുക്കള്‍";
-                    displayCow.style.color = "green"
-                    displayCow.innerHTML = content;
-                }if (numCow > 119 ) {
-                    content = "ഒരോ 30 മാടുകളിലും ഒരു വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ്. അല്ലങ്കിൽ ഒരോ 40 മാടുകളിലും രണ്ട് വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ് ";
+                } if (numCow > 109 & numCow < 120) {
+                    content = "2 വയസ്സുള്ള 2 പശുക്കള്‍ + 1 വയസ്സുള്ള 1 പശുക്കള്‍";
                     displayCow.style.color = "green"
                     displayCow.innerHTML = content;
                 }
+                // if (numCow > 119 ) {
+                //     content = "ഒരോ 30 മാടുകളിലും ഒരു വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ്. അല്ലങ്കിൽ ഒരോ 40 മാടുകളിലും രണ്ട് വയസ്സുള്ള ഒരു പശുവിനെ സകാതായി നൽകേണ്ടതാണ് ";
+                //     displayCow.style.color = "green"
+                //     displayCow.innerHTML = content;
+                // }
             }
+
+            function calculate() {
+    let number = parseInt(document.getElementById('input-cow').value);
+    const originalNumber = number;
+    const resultDiv = document.getElementById('display-cow');
+    resultDiv.innerHTML = '';
+
+    if (isNaN(number) || number <= 0) {
+        resultDiv.innerHTML = 'Please enter a valid positive number.';
+        return;
+    }
+
+    const ways = [];
+    let foundCombination = false;
+
+    while (!foundCombination && number >= 0) {
+        for (let i = 0; i * 30 <= number; i++) {
+            for (let j = 0; j * 40 <= number; j++) {
+                if (i * 30 + j * 40 === number) {
+                    let result = '';
+                    if (i > 0) {
+                        result += ` ഒരു വയസ്സുള്ള  ${i} പശുവിനെ`;
+                        if(j > 0){
+                            result += `യും കൂടെ`
+                        }else{
+                            result += ` സകാത്തായി നല്‍കേണ്ടതാണ്`
+                        }
+                    }
+                    if (j > 0) {
+                        result += ` രണ്ട് വയസ്സുള്ള ${j} പശുവിനെ സകാതായി നൽകേണ്ടതാണ് `;
+                    }
+                    ways.push(result.trim());
+                    foundCombination = true;
+                }
+            }
+        }
+        if (!foundCombination) {
+            number--;
+        }
+    }
+
+    if (ways.length > 0) {
+        let resultString = ``;
+        for (let k = 0; k < ways.length; k++) {
+            if (k > 0) {
+                resultString += 'അല്ലെങ്കിൽ ';
+            }
+            resultString += ways[k] + '<br>';
+        }
+        resultDiv.innerHTML = resultString;
+        if (originalNumber !== number) {
+            resultDiv.innerHTML += `<br>Note: The original number was ${originalNumber}, and it was reduced by ${originalNumber - number} to find a valid combination.`;
+        }
+    } 
+    // else {
+    //     resultDiv.innerHTML = `No combination of 40s and 50s can make ${number}.`;
+    // }
+}
         </script>
         <script src="../js/main.js"></script>
 
