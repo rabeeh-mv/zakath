@@ -15,6 +15,7 @@ async function getRates() {
 
     // Find gold and silver rows
     let goldRate = null;
+    
     let silverRate = null;
 
     rows.forEach(row => {
