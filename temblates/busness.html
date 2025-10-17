@@ -151,12 +151,18 @@
     </div>
     <script src="../js/prices.js"></script>
      <script>
+         setTimeout(() => {
+      document.getElementById("gold-prise").innerText = window.goldRate + " ₹/gram";
+      document.getElementById("siver-prise").innerText = window.silverRate + " ₹/gram";
+    }, 2000);
         document.getElementById("input-busi")
         const btn = document.getElementById("busi-find")
         btn.addEventListener('click', () => {
             const inputValue = parseFloat(document.getElementById("input-busi").value);
-            const goldIn = parseFloat(document.getElementById("gold-prise").value);
-            const silverIn = parseFloat(document.getElementById("siver-prise").value);
+            // const goldIn = parseFloat(document.getElementById("gold-prise").value);
+            const goldIn = window.goldRate 
+            // const silverIn = parseFloat(document.getElementById("siver-prise").value);
+            const silverIn = window.silverRate
             const silverPrice = silverIn * 595
             if (inputValue < silverPrice) {
                 notZhakath();
