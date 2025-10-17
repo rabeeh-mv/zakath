@@ -15,8 +15,8 @@ async function getRates() {
     });
 
     const headers = rows[0].map(h => h.trim().toLowerCase());
-    const itemIndex = headers.indexOf("Items");
-    const gramIndex = headers.indexOf("1 Gram");
+    const itemIndex = headers.indexOf("items");
+    const gramIndex = headers.indexOf("1 gram");
 
     if (itemIndex === -1 || gramIndex === -1) {
       throw new Error("Header names 'Items' or '1 Gram' not found in sheet.");
