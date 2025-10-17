@@ -27,7 +27,7 @@ async function getRates() {
     window.goldRate = goldRate;
     window.silverRate = silverRate;
 
-    console.log("Gold:", goldRate, "Silver:", silverRate);
+    console.log("Gold:",  window.goldRate, "Silver:", silverRate);
   } catch (err) {
     console.error("Error fetching rates:", err);
   }
