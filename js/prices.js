@@ -7,32 +7,34 @@ async function getRates() {
     const response = await fetch(sheetUrl);
     const text = await response.text();
 
-    // Split rows by newlines
-    const rows = text.trim().split("\n").map(row => row.split(","));
+    // Split CSV rows by new line
+    const rows = text.trim().split("\n").map(r => r.split(","));
 
-    // Remove ₹ and commas, keep numbers only
-    const cleanPrice = (price) => price.replace(/[₹,]/g, "").trim();
+    // Find header indexes dynamically
+    const headers = rows[0].map(h => h.trim().toLowerCase());
+    const itemIndex = headers.indexOf("items");
+    const lastGramIndex = headers.indexOf("1 gram");
 
-    // Find gold and silver rows
     let goldRate = null;
-    
     let silverRate = null;
 
-    rows.forEach(row => {
-      const item = row[0].toLowerCase();
-      if (item.includes("gold")) goldRate = cleanPrice(row[3]);
-      if (item.includes("silver")) silverRate = cleanPrice(row[3]);
-    });
+    for (let i = 1; i < rows.length; i++) {
+      const item = rows[i][itemIndex]?.trim().toLowerCase();
+      const rate = rows[i][lastGramIndex]?.trim();
 
-    // Export as global variables
+      if (item.includes("gold")) goldRate = rate;
+      if (item.includes("silver")) silverRate = rate;
+    }
+
+    // Store globally
     window.goldRate = goldRate;
     window.silverRate = silverRate;
 
-    console.log("Gold:",  window.goldRate, "Silver:", silverRate);
+    console.log("Gold:", goldRate, "Silver:", silverRate);
   } catch (err) {
     console.error("Error fetching rates:", err);
   }
 }
 
-// Auto-run on load
+// Auto-run
 getRates();
