@@ -150,42 +150,46 @@
 
     </div>
     <script src="../js/prices.js"></script>
-     <script>
-         setTimeout(() => {
-      document.getElementById("gold-prise").innerText = window.goldRate + " ₹/gram";
-      document.getElementById("siver-prise").innerText = window.silverRate + " ₹/gram";
-    }, 2000);
-        document.getElementById("input-busi")
-        const btn = document.getElementById("busi-find")
-        btn.addEventListener('click', () => {
-            const inputValue = parseFloat(document.getElementById("input-busi").value);
-            // const goldIn = parseFloat(document.getElementById("gold-prise").value);
-            const goldIn = window.goldRate 
-            // const silverIn = parseFloat(document.getElementById("siver-prise").value);
-            const silverIn = window.silverRate
-            const silverPrice = silverIn * 595
-            if (inputValue < silverPrice) {
-                notZhakath();
-            } else if (inputValue > silverPrice) {
-                find(inputValue);
-            } else if (inputValue === silverPrice) {
-                find(inputValue);
-            }
-        });
-        function notZhakath(){
-            document.getElementById("display-busi").style.color = "red";         
-            const content = "നിങ്ങൾക്ക് സകാത്ത് കൊടുക്കേണ്ടതില്ല"
-            document.getElementById("display-busi").textContent = content 
-        }
-        function find(){
-            document.getElementById("display-busi").style.color = "green";         
-            const inputValue = parseFloat(document.getElementById("input-busi").value);
-            const zakath = inputValue /40
-            const content = "സക്കാത്ത് ആയി നൽകേണ്ട തുക "+ zakath
-            document.getElementById("display-busi").textContent = content
-        }
-    </script>
-    <script src="../js/main.js"></script>
+<script>
+  // Wait until prices are fetched
+  setTimeout(() => {
+    if (window.goldRate && window.silverRate) {
+      // Update input values directly
+      document.getElementById("gold-prise").value = window.goldRate;
+      document.getElementById("siver-prise").value = window.silverRate;
+    } else {
+      console.warn("⚠️ Rates not loaded yet");
+    }
+  }, 2000);
+
+  const btn = document.getElementById("busi-find");
+  btn.addEventListener('click', () => {
+    const inputValue = parseFloat(document.getElementById("input-busi").value);
+    const goldIn = parseFloat(document.getElementById("gold-prise").value);
+    const silverIn = parseFloat(document.getElementById("siver-prise").value);
+    const silverPrice = silverIn * 595;
+
+    if (inputValue < silverPrice) {
+      notZhakath();
+    } else {
+      find(inputValue);
+    }
+  });
+
+  function notZhakath() {
+    document.getElementById("display-busi").style.color = "red";
+    document.getElementById("display-busi").textContent = "നിങ്ങൾക്ക് സകാത്ത് കൊടുക്കേണ്ടതില്ല";
+  }
+
+  function find(inputValue) {
+    document.getElementById("display-busi").style.color = "green";
+    const zakath = inputValue / 40;
+    document.getElementById("display-busi").textContent =
+      "സക്കാത്ത് ആയി നൽകേണ്ട തുക " + zakath.toFixed(2);
+  }
+</script>
+<script src="../js/main.js"></script>
+
     
 
 </body>
