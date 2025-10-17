@@ -7,27 +7,33 @@ async function getRates() {
     const response = await fetch(sheetUrl);
     const csvText = await response.text();
 
-    // Split rows safely — handle quoted commas properly
+    // Split rows safely and handle quoted commas
     const rows = csvText.trim().split(/\r?\n/).map(row => {
-      // Handle commas inside quotes (like "₹13,277")
-      return row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)?.map(c => c.replace(/^"|"$/g, "")) || [];
+      return row
+        .match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)
+        ?.map(c => c.replace(/^"|"$/g, "")) || [];
     });
 
     const headers = rows[0].map(h => h.trim().toLowerCase());
     const itemIndex = headers.indexOf("items");
     const gramIndex = headers.indexOf("1 gram");
 
+    if (itemIndex === -1 || gramIndex === -1) {
+      throw new Error("Header names 'Items' or '1 Gram' not found in sheet.");
+    }
+
     let goldRate = null;
     let silverRate = null;
 
     for (let i = 1; i < rows.length; i++) {
-      const item = rows[i][itemIndex]?.trim().toLowerCase();
-      const rate = rows[i][gramIndex]?.trim();
+      const item = rows[i][itemIndex]?.trim().toLowerCase() || "";
+      const rate = rows[i][gramIndex]?.trim() || "";
 
       if (item.includes("gold")) goldRate = rate;
       if (item.includes("silver")) silverRate = rate;
     }
 
+    // Save globally
     window.goldRate = goldRate;
     window.silverRate = silverRate;
 
