@@ -19,7 +19,7 @@ async function getRates() {
 
     rows.forEach(row => {
       const item = row[0].toLowerCase();
-      if (item.includes("gold")) goldRate = cleanPrice(row[1]);
+      if (item.includes("gold 24k")) goldRate = cleanPrice(row[1]);
       if (item.includes("silver")) silverRate = cleanPrice(row[1]);
     });
 
